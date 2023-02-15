@@ -11,6 +11,8 @@ server.use(bodyParser.urlencoded({extended: true}))
 server.use(bodyParser.json())
 server.use(jsonServer.defaults());
 
+const port = process.env.PORT ? process.env.PORT : 8000
+
 const SECRET_KEY = '123456789'
 
 const expiresIn = '1h'
@@ -118,6 +120,6 @@ server.use(/^(?!\/auth).*$/,  (req, res, next) => {
 
 server.use(router)
 
-server.listen(8000, () => {
+server.listen(port, () => {
   console.log('Run Auth API Server')
 })
